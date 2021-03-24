@@ -1,9 +1,7 @@
 <template>
   <Layout>
     <!-- Page Header -->
-    <header class="masthead" :style="{
-      backgroundImage: $page.general.edges[0].node.cover ? `url(http://106.75.71.140:1337${$page.general.edges[0].node.cover.url})` : ''
-    }">
+    <header class="masthead" style='background:url(/img/banner-bg.jpg) no-repeat;background-size: cover;'>
       <div class="overlay"></div>
       <div class="container">
         <div class="row">
