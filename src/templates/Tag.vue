@@ -31,10 +31,10 @@
             <p class="post-meta">
               Posted by
               <!-- <a href="#">{{item.}}</a> -->
-              {{item.created_at}}
+              {{item.created_at | getTime }}
             </p>
               <p class='flex'>
-                <span v-for='item in item.tags' :key='item.id' class='mr10'>
+                <span v-for='item in item.tags' :key='item.id' class='mr10 tag-code'>
                   <g-link :to="'/tag/' + item.id">{{item.title}}</g-link>
                 </span>
               </p>
@@ -67,11 +67,22 @@ query($id: ID!) {
 }
 </page-query>
 <script>
+import moment from 'moment';
 export default {
-  name: 'TagPage'
+  name: 'TagPage',
+  filters: {
+    getTime(val) {
+      return moment(val).format('MMMM Do YYYY, h:mm:ss a');
+    }
+  }
 }
 </script>
 
 <style>
-
+.tag-code {
+  background: #F5F5F5;
+  color: #666666;
+  font-size: 12px;
+  margin-right: 10px;
+}
 </style>

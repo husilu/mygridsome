@@ -15,7 +15,7 @@
               <span class="meta"
                 >Posted by
                 <!-- <a href="#">Start Bootstrap</a> -->
-                {{$page.posts.created_at}}</span
+                {{$page.posts.created_at | getTime}}</span
               >
             </div>
           </div>
@@ -53,6 +53,7 @@ query($id: ID!) {
 }
 </page-query>
 <script>
+import moment from 'moment';
 import MarkdownIt from 'markdown-it';
 const md = new  MarkdownIt();
 
@@ -61,6 +62,11 @@ export default {
   methods: {
     mdToHtml(markdown) {
       return md.render(markdown)
+    }
+  },
+  filters: {
+    getTime(val) {
+      return moment(val).format('MMMM Do YYYY, h:mm:ss a');
     }
   }
 };
